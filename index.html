@@ -1038,8 +1038,8 @@ VOICE: Confident, professional, calm, friendly but authoritative, clear, transpa
             } else {
                 // AI DP (using your logo)
                 dpHtml = `
-                    <div class="dp" title="Sawahili AI">
-                        <img src="${aiDpUrl}" alt="Sawahili AI">
+                    <div class="dp" title="Swahili AI">
+                        <img src="${aiDpUrl}" alt="Swahili AI">
                     </div>
                 `;
             }
@@ -1048,7 +1048,7 @@ VOICE: Confident, professional, calm, friendly but authoritative, clear, transpa
                 ${sender === 'user' ? '' : dpHtml}
                 <div class="message-content">
                     ${sender === 'ai' ? 
-                        '<div class="ai-tag"><i class="fas fa-robot"></i> Sawahili AI Pro</div>' : 
+                        '<div class="ai-tag"><i class="fas fa-robot"></i> Swahili AI Pro</div>' : 
                         ''
                     }
                     <div class="bubble">${formatText(text)}</div>
@@ -1073,23 +1073,15 @@ VOICE: Confident, professional, calm, friendly but authoritative, clear, transpa
             messageDiv.className = `message ${sender}`;
             
             messageDiv.innerHTML = `
-                <div class="dp" title="Sawahili AI">
-                    <img src="${aiDpUrl}" alt="Sawahili AI">
+                <div class="dp" title="Swahili AI">
+                    <img src="${aiDpUrl}" alt="Swahili AI">
                 </div>
                 <div class="message-content">
                     <div class="ai-tag">
-                        <i class="fas fa-robot"></i> Sawahili AI Pro
+                        <i class="fas fa-robot"></i> Swahili AI Pro
                     </div>
                     <div class="bubble">${formatText(text)}</div>
-                    <div class="identity-badge">
-                        <div class="identity-title">
-                            <i class="fas fa-map-marker-alt"></i>
-                            Anonmad Network | Kigoma, Tanzania
-                        </div>
-                        <div class="identity-details">
-                            Jukwaa la kitaalamu la AI lililoundwa kwa ajili ya uwezeshaji wa kiteknolojia
-                        </div>
-                    </div>
+                    
                 </div>
             `;
             
