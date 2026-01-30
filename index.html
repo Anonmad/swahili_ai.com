@@ -697,7 +697,7 @@
             showInitialMessage();
             
             // Load user DP from localStorage if exists
-            const savedUserDp = localStorage.getItem('sawahili_user_dp');
+            const savedUserDp = localStorage.getItem('swahili_user_dp');
             if (savedUserDp) {
                 currentUserDp = savedUserDp;
             }
@@ -954,7 +954,7 @@ VOICE: Confident, professional, calm, friendly but authoritative, clear, transpa
                 return {
                     text: `Ninafurahi kukutambulisha!
 
-                        Mimi naitwa Swahili AI Pro, nilitengenezwa na timu ya wataalamu wa technology ya Anonmad Network iliyopo Kigoma, Tanzania kwa ajili ya kuwa jukwaa la kiteknolojia la AI linaloongozwa na Watanzania kwa matumizi ya kimataifa
+                        Mimi ni Swahili AI Pro, nilitengenezwa na timu ya wataalamu wa technology ya Anonmad Network iliyopo Kigoma, Tanzania kwa ajili ya kuwa jukwaa la kiteknolojia la AI linaloongozwa na Watanzania kwa matumizi ya kimataifa
 
                         Mimi ni jukwaa la kitaalamu la akili bandia linalowezesha watu, biashara, na jamii kupitia teknolojia. Ninatoa ushauri sahihi, suluhisho za kiufundi, na msaada wa lugha ya Kiswahili na Kiingereza.
 
@@ -969,7 +969,7 @@ VOICE: Confident, professional, calm, friendly but authoritative, clear, transpa
                 return {
                     text: `I'm glad you asked about my identity!
 
-                       My name is Swahili AI Pro, I was created by a team of technology experts at Anonmad Network based in Kigoma, Tanzania to be a Tanzanian-led AI technology platform for global use
+                       I'm Swahili AI Pro, I was created by a team of technology experts at Anonmad Network based in Kigoma, Tanzania to be a Tanzanian-led AI technology platform for global use
 
                        I am a professional artificial intelligence platform that empowers people, businesses, and communities through technology. I provide sound advice, technical solutions, and support in Swahili and English.
 
@@ -1111,12 +1111,12 @@ VOICE: Confident, professional, calm, friendly but authoritative, clear, transpa
             const isIdentityResponse = response.isIdentityResponse;
             
             messageDiv.innerHTML = `
-                <div class="dp" title="Sawahili AI">
-                    <img src="${aiDpUrl}" alt="Sawahili AI">
+                <div class="dp" title="Swahili AI">
+                    <img src="${aiDpUrl}" alt="Swahili AI">
                 </div>
                 <div class="message-content">
                     <div class="ai-tag">
-                        <i class="fas fa-robot"></i> Sawahili AI Pro
+                        <i class="fas fa-robot"></i> Swahili AI Pro
                     </div>
                     <div class="bubble">
                         ${formattedText}
@@ -1267,10 +1267,6 @@ VOICE: Confident, professional, calm, friendly but authoritative, clear, transpa
             const finalDiv = document.createElement('div');
             finalDiv.className = 'final-question';
             finalDiv.innerHTML = `
-                <h4><i class="fas fa-question-circle"></i> Je, kuna kitu kingine unachotaka kujua?</h4>
-                <p>Uliweza kupata majibu yote unayohitaji? Ikiwa kuna kitu kingine, andika hapa chini:</p>
-                <textarea id="final-input" placeholder="Andika swali lako la mwisho au maoni yako..."></textarea>
-                <button onclick="submitFinalQuestion()">Tuma Swali</button>
             `;
             
             messagesDiv.appendChild(finalDiv);
@@ -1301,8 +1297,8 @@ VOICE: Confident, professional, calm, friendly but authoritative, clear, transpa
             typingDiv.className = 'message ai';
             
             typingDiv.innerHTML = `
-                <div class="dp" title="Sawahili AI">
-                    <img src="${aiDpUrl}" alt="Sawahili AI">
+                <div class="dp" title="Swahili AI">
+                    <img src="${aiDpUrl}" alt="Swahili AI">
                 </div>
                 <div class="message-content">
                     <div class="typing">
