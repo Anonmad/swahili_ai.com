@@ -1121,6 +1121,38 @@ VOICE: Confident, professional, calm, friendly but authoritative, clear, transpa
                     </div>
                     
                     ${isIdentityResponse ? `
+                        <div class="identity-badge">
+                            <div class="identity-title">
+                                <i class="fas fa-certificate"></i>
+                                Imetengenezwa na Anonmad Network
+                            </div>
+                            <div class="identity-details">
+                                Kigoma, Tanzania • Jukwaa la Kitaalamu la AI
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    <div class="answer-system">
+                        ${followUps.length > 0 ? `
+                            <div class="follow-up">
+                                ${followUps.map(q => 
+                                    `<button class="follow-up-btn" onclick="askFollowUp('${q}')">
+                                        ${q}
+                                    </button>`
+                                ).join('')}
+                            </div>
+                        ` : ''}
+                        
+                        <div class="rating">
+                            <span class="rating-text">Je jibu hili lilinufaisha?</span>
+                            <div class="rating-stars">
+                                ${[1,2,3,4,5].map(i => 
+                                    `<i class="fas fa-star star" onclick="rateAnswer(${i})"></i>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             `;
             
             messagesDiv.appendChild(messageDiv);
@@ -1188,40 +1220,87 @@ VOICE: Confident, professional, calm, friendly but authoritative, clear, transpa
             sendMessage();
         };
 
-        // Rate answer
-        window.rateAnswer = function(rating) {
-            const stars = document.querySelectorAll('.rating-stars .star');
-            stars.forEach((star, index) => {
-                if (index < rating) {
-                    star.classList.add('active');
-                } else {
-                    star.classList.remove('active');
-                }
-            });
+        // Rate answer - Iliyoboreshwa kutuma email
+window.rateAnswer = function(rating) {
+    const stars = document.querySelectorAll('.rating-stars .star');
+    stars.forEach((star, index) => {
+        if (index < rating) {
+            star.classList.add('active');
+        } else {
+            star.classList.remove('active');
+        }
+    });
+    
+    // ===== SEHEMU MPYA: Kutuma rating kwenye email =====
+    // Tumia Web3Forms kutuma data moja kwa moja kwenye email yako
+    const formData = new FormData();
+    formData.append('access_key', '5b1afb99-c506-4aa0-a465-904dbc20b678'); // Pata hii kutoka web3forms.com
+    formData.append('subject', 'Maoni Mapya ya Nyota kutoka kwa Mtumiaji');
+    formData.append('from_name', 'Swahili Bot User');
+    formData.append('email', 'ratingsdomain@gmail.com'); // Email yako ya kupokea taarifa
+    formData.append('message', `Mtumiaji amekupa rating ya ${rating} kati ya 5 nyota`);
+    formData.append('rating', rating + '/5 nyota');
+    formData.append('tarehe', new Date().toLocaleString('sw-TZ'));
+    formData.append('url', window.location.href);
+    
+    // Tuma data kwenye Web3Forms
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('Rating imetumwa kwenye email yako');
             
-            // Show thank you message
-            setTimeout(() => {
-                const feedback = rating >= 4 ? 
-                    'Asante kwa tathmini yako nzuri!' : 
-                    'Asante kwa tathmini. Nitaboresha zaidi.';
-                
-                const feedbackDiv = document.createElement('div');
-                feedbackDiv.className = 'message ai';
-                feedbackDiv.innerHTML = `
-                    <div class="dp" title="Sawahili AI">
-                        <img src="${aiDpUrl}" alt="Sawahili AI">
+            // Optional: Ongeza notification ndogo kwamba imetumwa
+            const notifyDiv = document.createElement('div');
+            notifyDiv.className = 'message ai';
+            notifyDiv.innerHTML = `
+                <div class="dp" title="Swahili AI">
+                    <img src="${aiDpUrl}" alt="Sawahili AI">
+                </div>
+                <div class="message-content">
+                    <div class="bubble" style="font-size: 12px; padding: 8px 12px; background: #e8f5e8;">
+                        <i class="fas fa-check-circle" style="color: #10b981; margin-right: 8px;"></i>
+                        Maoni yako yametumwa kwa msimamizi
                     </div>
-                    <div class="message-content">
-                        <div class="bubble" style="font-size: 14px; padding: 12px 16px;">
-                            <i class="fas fa-heart" style="color: #ef4444; margin-right: 8px;"></i>
-                            ${feedback}
-                        </div>
-                    </div>
-                `;
-                messagesDiv.appendChild(feedbackDiv);
-                scrollToBottom();
-            }, 500);
-        };
+                </div>
+            `;
+            messagesDiv.appendChild(notifyDiv);
+            scrollToBottom();
+        } else {
+            console.error('Tatizo la kutuma rating:', data);
+        }
+    })
+    .catch(error => {
+        console.error('Tatizo la mtandao:', error);
+    });
+    // ===== MWISHO WA SEHEMU MPYA =====
+    
+    // Show thank you message (Code yako ya awali imebaki sawa)
+    setTimeout(() => {
+        const feedback = rating >= 4 ? 
+            'Asante kwa tathmini yako nzuri!' : 
+            'Asante kwa tathmini. Nitaboresha zaidi.';
+        
+        const feedbackDiv = document.createElement('div');
+        feedbackDiv.className = 'message ai';
+        feedbackDiv.innerHTML = `
+            <div class="dp" title="Sawahili AI">
+                <img src="${aiDpUrl}" alt="Swahili AI">
+            </div>
+            <div class="message-content">
+                <div class="bubble" style="font-size: 14px; padding: 12px 16px;">
+                    <i class="fas fa-heart" style="color: #ef4444; margin-right: 8px;"></i>
+                    ${feedback}
+                </div>
+            </div>
+        `;
+        messagesDiv.appendChild(feedbackDiv);
+        scrollToBottom();
+    }, 500);
+};
 
         // Show final question
         function showFinalQuestion() {
