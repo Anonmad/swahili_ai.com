@@ -861,10 +861,6 @@ KEY IDENTITY INFORMATION:
 - Brand: Professional enterprise-level AI technology
 - Language: Respond in Swahili for Swahili questions, English for English questions
 
-MISSION: To build intelligent, reliable, and scalable AI solutions that empower people, businesses, and communities through technology.
-
-VISION: To become a leading African-driven AI technology platform with global impact, rooted in innovation, trust, and accessibility.
-
 VOICE: Confident, professional, calm, friendly but authoritative, clear, transparent, trustworthy.`;
             
             // Add specific instructions based on question type
@@ -954,7 +950,7 @@ VOICE: Confident, professional, calm, friendly but authoritative, clear, transpa
                 return {
                     text: `Ninafurahi kukutambulisha!
 
-                        Mimi ni Swahili AI Pro, nilitengenezwa na timu ya wataalamu wa technology ya Anonmad Network iliyopo Kigoma, Tanzania kwa ajili ya kuwa jukwaa la kiteknolojia la AI linaloongozwa na Watanzania kwa matumizi ya kimataifa
+                        Mimi ni Swahili AI Pro, nilitengenezwa na timu ya wataalamu wa technology ya Anonmad Network iliyopo Kigoma, Tanzania.
 
                         Mimi ni jukwaa la kitaalamu la akili bandia linalowezesha watu, biashara, na jamii kupitia teknolojia. Ninatoa ushauri sahihi, suluhisho za kiufundi, na msaada wa lugha ya Kiswahili na Kiingereza.
 
@@ -969,7 +965,7 @@ VOICE: Confident, professional, calm, friendly but authoritative, clear, transpa
                 return {
                     text: `I'm glad you asked about my identity!
 
-                       I'm Swahili AI Pro, I was created by a team of technology experts at Anonmad Network based in Kigoma, Tanzania to be a Tanzanian-led AI technology platform for global use
+                       I'm Swahili AI Pro, I was created by a team of technology experts at Anonmad Network based in Kigoma, Tanzania.
 
                        I am a professional artificial intelligence platform that empowers people, businesses, and communities through technology. I provide sound advice, technical solutions, and support in Swahili and English.
 
@@ -1125,38 +1121,6 @@ VOICE: Confident, professional, calm, friendly but authoritative, clear, transpa
                     </div>
                     
                     ${isIdentityResponse ? `
-                        <div class="identity-badge">
-                            <div class="identity-title">
-                                <i class="fas fa-certificate"></i>
-                                Imetengenezwa na Anonmad Network
-                            </div>
-                            <div class="identity-details">
-                                Kigoma, Tanzania • Jukwaa la Kitaalamu la AI
-                            </div>
-                        </div>
-                    ` : ''}
-                    
-                    <div class="answer-system">
-                        ${followUps.length > 0 ? `
-                            <div class="follow-up">
-                                ${followUps.map(q => 
-                                    `<button class="follow-up-btn" onclick="askFollowUp('${q}')">
-                                        ${q}
-                                    </button>`
-                                ).join('')}
-                            </div>
-                        ` : ''}
-                        
-                        <div class="rating">
-                            <span class="rating-text">Je jibu hili lilinufaisha?</span>
-                            <div class="rating-stars">
-                                ${[1,2,3,4,5].map(i => 
-                                    `<i class="fas fa-star star" onclick="rateAnswer(${i})"></i>`
-                                ).join('')}
-                            </div>
-                        </div>
-                    </div>
-                </div>
             `;
             
             messagesDiv.appendChild(messageDiv);
@@ -1348,5 +1312,4 @@ VOICE: Confident, professional, calm, friendly but authoritative, clear, transpa
         }
     </script>
 </body>
-
 </html>
