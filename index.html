@@ -769,20 +769,6 @@ html, body {
             <div class="welcome" id="welcome">
                 <h1>𝗦𝘄𝗮𝗵𝗶𝗹𝗶 𝗔𝗜 𝗣𝗿𝗼</h1>
                 <p>Msaada wa kitaalamu wa AI kwa lugha ya Kiswahili. Nipo hapa kukujibu kwa usahihi na undani.</p>
-                <div class="quick-actions">
-                    <button class="quick-btn" data-prompt="Nisaidie kuandika barua rasmi">
-                        <i class="fas fa-envelope"></i> Barua Rasmi
-                    </button>
-                    <button class="quick-btn" data-prompt="Nifundishe kuhusu programu za kompyuta">
-                        <i class="fas fa-code"></i> Programu
-                    </button>
-                    <button class="quick-btn" data-prompt="Eleza kuhusu hali ya hewa ya leo">
-                        <i class="fas fa-cloud-sun"></i> Hali ya Hewa
-                    </button>
-                    <button class="quick-btn" data-prompt="Toa mazoezi ya hesabu ya shule">
-                        <i class="fas fa-calculator"></i> Mazoezi
-                    </button>
-                </div>
             </div>
         </div>
 
@@ -1251,19 +1237,10 @@ VOICE: Confident, professional, calm, friendly but authoritative, clear, transpa
                     <div class="bubble">
                         ${formattedText}
                         ${response.confidence === 'high' ? 
-                            '<div class="confidence"><i class="fas fa-check-circle"></i> Jibu lina usahihi wa juu</div>' : ''}
+                            '' : ''}
                     </div>
                     
                     ${isIdentityResponse ? `
-                        <div class="identity-badge">
-                            <div class="identity-title">
-                                <i class="fas fa-certificate"></i>
-                                Imetengenezwa na Anonmad Network
-                            </div>
-                            <div class="identity-details">
-                                Kigoma, Tanzania • Jukwaa la Kitaalamu la AI
-                            </div>
-                        </div>
                     ` : ''}
                     
                     <div class="answer-system">
